@@ -1,5 +1,11 @@
 :root{
     --content-visibility: inline-block;
+    --indicator: '✖';
+    --indicatorColor: #f00;
+}
+@font-face {
+    font-family: "Norse";
+    src: url(Norse-Bold.otf);
 }
 
 * {
@@ -89,19 +95,30 @@
     border: 1px solid red;
 }
 
-input:valid+span::before {
+.form-card input:valid+span::before {
     content: '✓';
     color: #0f0;
 }
 
-input[id="user-password"]+span::after{
+ input[type="password"] + span::before{
+    position: absolute;
+    top: 1px;
+    left: 10px;
+}
+
+ input[type="password"] + span::before {
+    content: var(--indicator);
+    color: var(--indicatorColor);
+}
+
+.form-card input[id="user-password"]+span::after{
     position: absolute;
     top: 22px;
     right: 33px;
     white-space: nowrap;
 }
 
-input[id="user-password"]+span::after {
+.form-card input[id="user-password"]+span::after {
     content: "*Passwords don't match!";
     display: var(--content-visibility);
     color: #f00;
@@ -134,7 +151,40 @@ a {
     color: rgb(39, 87, 39);
 }
 .splash {
-    background-image: url('halie-west-25xggax4bSA-unsplash.jpg');    
+    position:relative;
     height: 100vh;
-    width: 100vw;
+    width: 50vw;
+    background-size: cover;
+}
+.img{
+    width: 100%;
+    height: 100%;
+    background: url('halie-west-25xggax4bSA-unsplash.jpg') no-repeat ;
+    background-position: center;
+    background-size: cover;    
+}
+
+.logo-parent{
+ position: absolute;
+ width: 100%;
+}
+
+.logo {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.384);
+    width: 100%;
+    justify-content: center;
+    margin-top: 155px;
+}
+
+.logo img{
+    width: 100px;
+    height: auto;
+}
+
+.logo p {
+    color: #fff;
+    font-size: 70px;
+    margin-top: 40px;
+    font-family: "Norse", 'Times New Roman', Times, serif;
 }
