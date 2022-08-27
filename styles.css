@@ -1,3 +1,7 @@
+:root{
+    --content-visibility: inline-block;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -81,13 +85,27 @@
     color: #f00;
 }
 
-.form-card input:invalid {
+.form-card input:invalid:not(:focus):not(:placeholder-shown) {
     border: 1px solid red;
 }
 
-input:valid+span::after {
+input:valid+span::before {
     content: '✓';
     color: #0f0;
+}
+
+input[id="user-password"]+span::after{
+    position: absolute;
+    top: 22px;
+    right: 33px;
+    white-space: nowrap;
+}
+
+input[id="user-password"]+span::after {
+    content: "*Passwords don't match!";
+    display: var(--content-visibility);
+    color: #f00;
+    font-size: 15px;
 }
 
 
